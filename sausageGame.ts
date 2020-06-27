@@ -11,6 +11,18 @@ namespace sausageGame {
             }
         }
     }
+    export function gravityJump() {
+        if ((Level == 11 || Level == 12 || Level == 13 || Level == 14 || Level == 16 || blockSettings.readNumber("Level") == 11) && !(Sausage.tileKindAt(TileDirection.Center, myTiles.tile4))) {
+            controller.moveSprite(Sausage, 200, 200)
+            while (!(Sausage.isHittingTile(CollisionDirection.Bottom)) && !(Sausage.tileKindAt(TileDirection.Center, myTiles.tile4))) {
+                Sausage.y += 4
+                pause(10)
+            }
+            if (controller.up.isPressed()) {
+                Sausage.y += -100
+            }
+        }
+    }
     export function animateSausage() {
         animateLeft()
         animateRight()        

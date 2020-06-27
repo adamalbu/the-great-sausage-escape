@@ -1,4 +1,4 @@
-namespace myTiles {
+    namespace myTiles {
     //% blockIdentity=images._tile
     export const tile0 = img`
         . . . . . . . . . . . . . . . .
@@ -880,17 +880,13 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location
     } else {
     	
     }
-    // console.log("Level is:")
-    // console.log(Level)
-    // if (Level != 8 && blockSettings.readNumber("Level") != 8) {
-    //     console.log("Level:" + Level)
-        sausageGame.removeSpawnTile(myTiles.tile5, myTiles.tile1)
-    // }
+    // console.log("Level is:") console.log(Level) if
+    // (Level != 8 && blockSettings.readNumber("Level") !=
+    // 8) { console.log("Level:" + Level)
+    sausageGame.removeSpawnTile(myTiles.tile5, myTiles.tile1)
 })
-let Sausage: Sprite = null
 let Level = 0
-Level = 7
-blockSettings.writeNumber("Level", 7)
+let Sausage: Sprite = null
 Sausage = sprites.create(img`
     . . e e . .
     . e e e e .
@@ -929,31 +925,23 @@ scene.cameraFollowSprite(Sausage)
 storyboard.loaderBootSequence.register()
 storyboard.start("")
 sausageGame.removeSpawnTile(myTiles.tile5, myTiles.tile1)
-forever(function () {
-    sausageGame.animateSausage()
- 
-})
-forever(function () {
-    if ((Level == 11 || Level == 12 || Level == 13 || Level == 14 || Level == 16 || blockSettings.readNumber("Level") == 11) && !(Sausage.tileKindAt(TileDirection.Center, myTiles.tile4))) {
-        controller.moveSprite(Sausage, 200, 200)
-        while (!(Sausage.isHittingTile(CollisionDirection.Bottom)) && !(Sausage.tileKindAt(TileDirection.Center, myTiles.tile4))) {
-            Sausage.y += 4
-            pause(10)
-        }
-        if (controller.up.isPressed()) {
-            Sausage.y += -100
-        }
-    } else {
-    	
-    }
-})
-// forever(function () {
-//     if ((Sausage.isHittingTile(CollisionDirection.Left) || Sausage.isHittingTile(CollisionDirection.Top) || Sausage.isHittingTile(CollisionDirection.Bottom) || Sausage.isHittingTile(CollisionDirection.Right)) && (Level == 10 || blockSettings.readNumber("Level") == 10 || (Level == 9 || blockSettings.readNumber("Level") == 9))) {
-//         if (Level == 9 && blockSettings.readNumber("Level") == 9){
-//             tiles.placeOnTile(Sausage, tiles.getTileLocation(0, 9))
-//         }
-//     }
-// })
+// forever(function () { if
+// ((Sausage.isHittingTile(CollisionDirection.Left) ||
+// Sausage.isHittingTile(CollisionDirection.Top) ||
+// Sausage.isHittingTile(CollisionDirection.Bottom) ||
+// Sausage.isHittingTile(CollisionDirection.Right)) &&
+// (Level == 10 || blockSettings.readNumber("Level")
+// == 10 || (Level == 9 ||
+// blockSettings.readNumber("Level") == 9))) { if
+// (Level == 9 && blockSettings.readNumber("Level") ==
+// 9){ tiles.placeOnTile(Sausage,
+// tiles.getTileLocation(0, 9)) } } })
 game.onUpdate(function () {
     sausageGame.restartLevelWhenHittingWall()
+})
+forever(function () {
+    sausageGame.animateSausage()
+})
+forever(function () {
+    sausageGame.gravityJump()
 })
