@@ -14,7 +14,7 @@
         "README.md",
         "sausageGame.ts"
     ],
-    "preferredEditor": "blocksprj",
+    "preferredEditor": "tsprj",
     "testFiles": [
         "test.ts"
     ]
