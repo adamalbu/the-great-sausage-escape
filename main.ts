@@ -1,4 +1,4 @@
-    namespace myTiles {
+namespace myTiles {
     //% blockIdentity=images._tile
     export const tile0 = img`
         . . . . . . . . . . . . . . . .
@@ -880,9 +880,6 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location
     } else {
     	
     }
-    // console.log("Level is:") console.log(Level) if
-    // (Level != 8 && blockSettings.readNumber("Level") !=
-    // 8) { console.log("Level:" + Level)
     sausageGame.removeSpawnTile(myTiles.tile5, myTiles.tile1)
 })
 let Level = 0
@@ -925,23 +922,12 @@ scene.cameraFollowSprite(Sausage)
 storyboard.loaderBootSequence.register()
 storyboard.start("")
 sausageGame.removeSpawnTile(myTiles.tile5, myTiles.tile1)
-// forever(function () { if
-// ((Sausage.isHittingTile(CollisionDirection.Left) ||
-// Sausage.isHittingTile(CollisionDirection.Top) ||
-// Sausage.isHittingTile(CollisionDirection.Bottom) ||
-// Sausage.isHittingTile(CollisionDirection.Right)) &&
-// (Level == 10 || blockSettings.readNumber("Level")
-// == 10 || (Level == 9 ||
-// blockSettings.readNumber("Level") == 9))) { if
-// (Level == 9 && blockSettings.readNumber("Level") ==
-// 9){ tiles.placeOnTile(Sausage,
-// tiles.getTileLocation(0, 9)) } } })
 game.onUpdate(function () {
     sausageGame.restartLevelWhenHittingWall()
 })
 forever(function () {
-    sausageGame.animateSausage()
+    sausageGame.gravityJump()
 })
 forever(function () {
-    sausageGame.gravityJump()
+    sausageGame.animateSausage()
 })
