@@ -4,9 +4,11 @@ namespace sausageGame {
             tiles.setTileAt(value, emptyTile)
         }
     }
-    export function isHittingWall(){
+    export function restartLevelWhenHittingWall() {
         if ((Sausage.isHittingTile(CollisionDirection.Left) || Sausage.isHittingTile(CollisionDirection.Top) || Sausage.isHittingTile(CollisionDirection.Bottom) || Sausage.isHittingTile(CollisionDirection.Right)) && (Level == 10 || blockSettings.readNumber("Level") == 10 || (Level == 9 || blockSettings.readNumber("Level") == 9))) {
-            tiles.placeOnRandomTile(Sausage, myTiles.tile5)
+            if (Level == 9 && blockSettings.readNumber("Level") == 9 || Level == 10 && blockSettings.readNumber("Level") == 10) {
+                tiles.placeOnTile(Sausage, tiles.getTileLocation(0, 9))
+            }
         }
     }
     export function animateSausage() {
